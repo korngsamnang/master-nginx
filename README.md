@@ -51,9 +51,25 @@ git clone https://github.com/korngsamnang/master-nginx
 cd master-nginx
 ```
 
-### 2. Add SSL Certificates
+### 2. Generate SSL Certificates
 
-Place your self-signed SSL certificates (nginx-selfsigned.crt and nginx-selfsigned.key) in the certs/ directory.
+To enable HTTPS, you need SSL certificates. Use the following openssl command to generate self-signed certificates:
+
+```bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx-selfsigned.key -out nginx-selfsigned.crt
+```
+
+Explanation:
+
+-   req: Initiates a certificate request.
+-   x509: Creates a self-signed certificate instead of a certificate signing request (CSR).
+-   nodes: Skips the option to encrypt the private key (no passphrase).
+-   days 365: Validity period of the certificate (1 year).
+-   newkey rsa:2048: Generates a new RSA key pair with 2048 bits.
+-   keyout: Specifies the filename for the private key.
+-   out: Specifies the filename for the certificate.
+
+Place the generated nginx-selfsigned.crt and nginx-selfsigned.key files in the certs/ directory.
 
 ### 3. Build and Run the Containers
 
