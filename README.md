@@ -2,6 +2,9 @@
 
 This project demonstrates a setup where Nginx acts as a load balancer for three Node.js applications running in Docker containers. The configuration includes HTTPS support with self-signed SSL certificates.
 
+> Process flow diagram
+> ![](diagram.png)
+
 ---
 
 ## Features
